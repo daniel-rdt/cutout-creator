@@ -1,0 +1,12 @@
+# configuration for cutout creation
+version: 0.1
+
+cutout:
+  time: "1996"
+  x: [-12., 41.]
+  y: [33., 72]
+  dx: 0.3
+  dy: 0.3
+existing_cutouts:
+  sarah: false
+  era5: true

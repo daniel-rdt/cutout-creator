@@ -1,0 +1,4 @@
+# For syncing with a cluster using rsync
+
+scripts
+config.yaml
