@@ -24,7 +24,7 @@ def prepare_cutout_sarah(year, cutout_params):
 def prepare_cutout_era5(year, cutout_params):
 
     cutout = atlite.Cutout(
-        path=f"era5/europe-era5-{year}.nc",
+        path=f"../era5/europe-era5-{year}.nc",
         module="era5",
         **cutout_params)
 
@@ -67,7 +67,7 @@ if __name__ == "__main__":
         prepare_cutout_sarah(year, cutout_params)
         logger.info(f"SARAH cutout saved to '/sarah/europe-{year}-sarah-3.nc'")
     else:
-        logger.info(f"Cutout for SARAH already prepared and will be imported from '/sarah/europe-{year}-sarah-3.nc'. Please, place input cutout in the required path if not already done.")
+        logger.info(f"Cutout for SARAH already prepared and can be imported from '/sarah/europe-{year}-sarah-3.nc'. Please, place input cutout in the required path if not already done.")
 
     # ERA5
     if not config["existing_cutouts"]["era5"]:
@@ -75,15 +75,15 @@ if __name__ == "__main__":
         prepare_cutout_era5(year, cutout_params)
         logger.info(f"ERA5 cutout saved to 'era5/europe-era5-{year}.nc'")
     else:
-        logger.info(f"Cutout for ERA5 already prepared and will be imported from 'ERA5/europe-era5-{year}.nc'. Please, place input cutout in the required path if not already done.")
+        logger.info(f"Cutout for ERA5 already prepared and can be imported from 'ERA5/europe-era5-{year}.nc'. Please, place input cutout in the required path if not already done.")
 
+    if config["merge"]:
+        # Merging
+        logger.info(f"Merging SARAH and ERA5 cutout for {year}")
+        merge_sarah_with_era5(year)
+        logger.info(f"Merged SARAH and ERA5 cutout saved to 'sarah-era5/europe-{year}-sarah3-era5.nc'")
 
-    # Merging
-    logger.info(f"Merging SARAH and ERA5 cutout for {year}")
-    merge_sarah_with_era5(year)
-    logger.info(f"Merged SARAH and ERA5 cutout saved to 'sarah-era5/europe-{year}-sarah3-era5.nc'")
-
-    # Compression
-    logger.info(f"Compressing SARAH and ERA5 cutout for {year}")
-    compress(year)
-    logger.info(f"Compressed SARAH and ERA5 cutout saved to 'sarah-era5/europe-{year}-sarah3-era5-compressed.nc'")
+        # Compression
+        logger.info(f"Compressing SARAH and ERA5 cutout for {year}")
+        compress(year)
+        logger.info(f"Compressed SARAH and ERA5 cutout saved to 'sarah-era5/europe-{year}-sarah3-era5-compressed.nc'")

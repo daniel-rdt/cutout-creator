@@ -1,6 +1,7 @@
 # configuration for cutout creation
 version: 0.1
 
+merge: true
 cutout:
   time: "1996"
   x: [-12., 41.]
