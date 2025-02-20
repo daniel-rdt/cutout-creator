@@ -1,8 +1,10 @@
 # configuration for cutout creation
-version: 0.1
+version: 0.2
 
 cutout:
-  time: "1996"
+  time:
+    - "1999"
+    - "2019"
   x: [-12., 41.]
   y: [33., 72]
   dx: 0.3
