@@ -28,7 +28,7 @@ def prepare_cutout_era5(year, cutout_params):
         module="era5",
         **cutout_params)
 
-    cutout.prepare()
+    cutout.prepare(monthly_requests=True)
 
 # Merging
 def merge_sarah_with_era5(year):
