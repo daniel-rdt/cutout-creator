@@ -22,7 +22,7 @@ Modify the config.yaml file to specify your cutout preferences:
 
 - Cutout: Define the years and parameters for each dataset.
 - Merging: Set `merge: true` to merge the ERA5 and SARAH cutouts into a combined and compressed cutout
-that will be saved intp the folder named `sarah-era5`.
+that will be saved into the folder named `sarah-era5`.
 - Existing cutouts: If you already have cutouts, place them into the respective `era5` or `sarah` folders.
 
 ## 3. SARAH Cutout Requirements
@@ -62,7 +62,14 @@ To download the dataset, visit the **EUMETSTAT** website (the link points to the
 
 You are now ready to create cutouts using the SARAH-3 dataset.
 
-## 4. Running the code
+## 4. ERA Cutout Requirements
+To download and prepare the ERA cutouts, set the configuration option `existing` for ERA to `false`.
+Before you can start the processing, you need to complete the two following steps:
+- Follow the instructions on the [CDS Copernicus page](https://cds.climate.copernicus.eu/how-to-api) to set up your API access.
+This will prompt you to set up an account and place your API key into a local file `$HOME/.cdsapirc`.
+- Install the Copernicus Climate Data Store `cdsapi` package in your local environment if not already included.
+
+## 5. Running the code
 Finally, to run the code and create the cutouts call:
 ```
 python build_cutout.py
